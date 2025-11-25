@@ -1,5 +1,5 @@
 import JSZip from 'jszip';
-import * as FileSaver from 'file-saver';
+import saveAs from 'file-saver';
 import forge from 'node-forge';
 
 export function setupServerDownload({ btnServer }) {
@@ -300,7 +300,7 @@ This server uses auto-generated self-signed certificates to run locally over HTT
                 zip.file("README.md", readme);
 
                 const content = await zip.generateAsync({ type: "blob" });
-                FileSaver.saveAs(content, "server.zip");
+                saveAs(content, "server.zip");
 
             } catch (e) {
                 console.error(e);

@@ -1,5 +1,5 @@
 import JSZip from 'jszip';
-import * as FileSaver from 'file-saver';
+import saveAs from 'file-saver';
 import { views } from './script.js';
 
 export function setupExport({ btnExport, saveCurrentViewState, renderElementContent }) {
@@ -103,7 +103,7 @@ document.querySelectorAll('.teb-btn').forEach(btn => {
         zip.file("manifest.json", JSON.stringify(manifest, null, 2));
 
         const content = await zip.generateAsync({ type: "blob" });
-        FileSaver.saveAs(content, "extension.zip");
+        saveAs(content, "extension.zip");
     });
 }
 
@@ -113,7 +113,7 @@ function generateHTMLForView(view, renderElementContent) {
         const tempWrapper = document.createElement('div');
         renderElementContent(tempWrapper, el.type, el.props);
         return tempWrapper.innerHTML;
-    }).join('\\n');
+    }).join('\n');
 
     // Special styles for overlay/component (Transparency)
     let extraStyle = '';

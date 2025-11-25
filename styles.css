@@ -58,6 +58,7 @@ body {
 .actions {
     display: flex;
     gap: 8px;
+    align-items: center;
 }
 
 .btn {
@@ -400,4 +401,51 @@ body {
     background-color: #3a3a3a;
     margin: 8px 0;
     width: 100%;
+}
+
+/* Live sync status */
+.live-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--text-secondary);
+}
+
+.live-status .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #666;
+}
+
+.live-status .label {
+    font-weight: 600;
+}
+
+.live-status.connecting .dot {
+    background-color: #facc15; /* amber */
+}
+
+.live-status.connecting .label {
+    color: #facc15;
+}
+
+.live-status.connected .dot {
+    background-color: #22c55e; /* green */
+}
+
+.live-status.connected .label {
+    color: #22c55e;
+}
+
+.live-status.disconnected .dot {
+    background-color: #f97373; /* red-ish */
+}
+
+.live-status.disconnected .label {
+    color: #f97373;
 }
